@@ -1,40 +1,150 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Hello World!</title>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header id="titlebar">
-      <div id="drag-region">
-        <div id="window-title">
-          <span id="window-title-text">BeamNG.drive Multiplayer Link</span>
-        </div>
+<head>
+  <title>Hello World!</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header id="titlebar">
+    <div id="drag-region">
+      <div id="window-title">
+        <span id="window-title-text">BeamNG.drive Multiplayer Link</span>
+      </div>
 
-        <div id="window-controls">
-          <div class="button" id="min-button">
-            <span>&#xE921;</span>
-          </div>
-          <div class="button" id="max-button">
-            <span>&#xE922;</span>
-          </div>
-          <div class="button" id="restore-button">
-            <span>&#xE923;</span>
-          </div>
-          <div class="button" id="close-button">
-            <span>&#xE8BB;</span>
-          </div>
+      <div id="window-controls">
+        <div class="button" id="min-button">
+          <span>&#xE921;</span>
+        </div>
+        <div class="button" id="max-button">
+          <span>&#xE922;</span>
+        </div>
+        <div class="button" id="restore-button">
+          <span>&#xE923;</span>
+        </div>
+        <div class="button" id="close-button">
+          <span>&#xE8BB;</span>
         </div>
       </div>
-    </header>
-
-    <div id="main">
-
     </div>
-    <!-- You can also require other files to run in this process -->
-    <script>let $ = require('jquery');</script>
-    <script src="./renderer.js"></script>
-    <script src="./script.js"></script>
-  </body>
+  </header>
+
+  <div id="main">
+    <div id="container">
+      <div id="top">
+        <div class="col-2">
+          <span>BeamNG <--> Link/Launcher</span>
+          <table>
+            <tr>
+              <td>
+                <span>TCP Port</span>
+              </td>
+              <td>
+                <input id="TCPport" class="settings-input" value="4444"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>UDP Port</span>
+              </td>
+              <td>
+                <input id="UDPport" class="settings-input" value="4445"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>WS Port</span>
+              </td>
+              <td>
+                <input id="WSport" class="settings-input" value="4446" disabled/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>Computer IP</span>
+              </td>
+              <td>
+                <input id="SYSip" class="settings-input" value="localhost"/>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <hr class="vr">
+        <div class="col-2">
+          <span>Link/Launcher <--> Server</span>
+          <table>
+            <tr>
+              <td>
+                <span>TCP Port</span>
+              </td>
+              <td>
+                <input id="sTCPport" class="settings-input" value="30813"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>UDP Port</span>
+              </td>
+              <td>
+                <input id="sUDPport" class="settings-input" value="30814"/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>WS Port</span>
+              </td>
+              <td>
+                <input id="sWSport" class="settings-input" value="30815" disabled/>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>Server IP</span>
+              </td>
+              <td>
+                <input id="sSYSip" class="settings-input" value="0.0.0.0"/>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div id="middle">
+        <div id="console">
+          <ul id="live-console">
+          </ul>
+        </div>
+      </div>
+      <div id="bottom">
+        <div id="options">
+          <div class="input-group">
+            <label><input class="input-checkbox" type="checkbox" name="" value=""> TCP In </label>
+          </div>
+          <div class="input-group">
+            <label><input class="input-checkbox" type="checkbox" name="" value=""> TCP Out</label>
+          </div>
+          <div class="input-group">
+            <label><input class="input-checkbox" type="checkbox" name="" value=""> UDP In </label>
+          </div>
+          <div class="input-group">
+            <label><input class="input-checkbox" type="checkbox" name="" value=""> UDP Out</label>
+          </div>
+          <div class="input-group">
+            <label><input class="input-checkbox" type="checkbox" name="" value=""> WS In </label>
+          </div>
+          <div class="input-group">
+            <label><input class="input-checkbox" type="checkbox" name="" value=""> WS Out</label>
+          </div>
+        </div>
+        <div id="control-buttons">
+          <button class="ui-button" id="RESET">Reset (Automatic Restarting)</button>
+          <button class="ui-button" id="START">Start</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- You can also require other files to run in this process -->
+  <script>let $ = require('jquery');</script>
+  <script src="./renderer.js"></script>
+  <script src="./script.js"></script>
+</body>
 </html>

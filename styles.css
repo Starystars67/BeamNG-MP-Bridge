@@ -119,9 +119,95 @@ p {
   color: rgba(255,255,255,0.4);
 }
 
+.col-2 {
+    width: 50%;
+    text-align: center;
+    border: solid 2px #4c4c4c;
+    padding: 4px;
+}
 
+div#top {
+    display: flex;
+}
 
+table {
+    text-align: left;
+    width: 100%;
+}
 
+input {
+    width: 100%;
+    padding: 2px;
+}
+
+tr {
+}
+
+hr.vr {
+    width: 2px;
+    height: 124px;
+    color: aliceblue;
+}
+
+div#bottom {
+    display: block;
+    position: absolute;
+    bottom: 15px;
+    border: solid 2px #4c4c4c;
+    height: 62px;
+    width: 95%;
+}
+
+div#options {
+    display: flex;
+    width: 100%;
+    border-bottom: solid 2px #4c4c4c;
+}
+
+.input-group {
+    display: flex;
+    width: 100%;
+    padding: 3px;
+    height: 25px;
+}
+
+label {
+    display: block;
+    padding-left: 20px;
+}
+
+input.input-checkbox {
+    width: 13px;
+}
+
+div#control-buttons {
+    width: 100%;
+    display: flex;
+}
+
+.ui-button {
+    width: 100%;
+    height: 21px;
+    margin: 5px;
+}
+
+div#middle {
+    margin: 5px 0px;
+    border: solid 2px #4c4c4c;
+    height: 100%;
+}
+
+div#console {
+    height: calc(100vh - 275px);
+}
+
+ul#live-console {
+    list-style: none;
+    padding-left: 10px;
+    overflow: auto;
+    max-height: 100%;
+    padding-bottom: 10px;
+}
 
 .custom-file {
     margin-bottom: 16px;
