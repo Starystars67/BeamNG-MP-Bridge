@@ -172,16 +172,15 @@ function Start(config) {
   });
   UDPserver.on('message',function(msg,rinfo){
     Rinfo = rinfo;
-    if (checkboxes.UDPOUT) {
-      win.webContents.send('console', `[UDP][Client --> Server] ${msg.toString()}`);
-    }
-    UDPclient.send(msg,Rinfo.port,Rinfo.address,function(err){
+    UDPclient.send(msg,config.remote.udp,config.remote.ip,function(err){
       if(err){
         win.webContents.send('console', `[TCP][${Name}] UDP (client) Error Seek Developer Help!`);
         win.webContents.send('err', err);
         console.error(err);
       }else{
-        //console.log('Data sent !!!');
+        if (checkboxes.UDPOUT) {
+          win.webContents.send('console', `[UDP][Client --> Server] ${msg.toString()}`);
+        }
       }
     });
   });
