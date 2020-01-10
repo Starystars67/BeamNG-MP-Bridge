@@ -60,6 +60,21 @@ $(document).ready(function(){
         }
         else if($(this).attr('id') == "RESET"){
             //alert("RESET!")
+            var config = {
+                ["option"]: "RESET",
+                ["local"]: {
+                    ["tcp"]: $("#TCPport").val(),
+                    ["udp"]: $("#UDPport").val(),
+                    ["ws"]: $("#WSport").val(),
+                },
+                ["remote"]: {
+                    ["ip"]: $("#SERVERip").val(),
+                    ["tcp"]: $("#sTCPport").val(),
+                    ["udp"]: $("#sUDPport").val(),
+                    ["ws"]: $("#sWSport").val(),
+                },
+            };
+            ipc.send('control', config)
         }
         // Send updated choices to main
         ipc.send('checkboxes',checkboxes);
@@ -77,6 +92,17 @@ ipc.on('console', (event, messages) => {
  console.log(messages)
  ConsoleLog(messages)
  updateScroll()
+});
+
+ipc.on('settings', (event, messages) => {
+ console.log(messages)
+ $("#TCPport").val(messages.settings.local.tcp);
+ $("#UDPport").val(messages.settings.local.udp);
+ $("#WSport").val(messages.settings.local.ws);
+ $("#SERVERip").val(messages.settings.remote.ip);
+ $("#sTCPport").val(messages.settings.remote.tcp);
+ $("#sUDPport").val(messages.settings.remote.udp);
+ $("#sWSport").val(messages.settings.remote.ws);
 });
 
 ipc.on('err', (event, messages) => {

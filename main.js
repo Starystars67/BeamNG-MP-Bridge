@@ -1,7 +1,54 @@
 const path = require('path')
 const os = require('os');
+var fs = require('fs');
 var argv = require('minimist')(process.argv.slice(2));
 const { app, BrowserWindow, ipcMain, dialog } = require('electron')
+
+var Name = "Bridge"
+var filename = "config.json"
+var cfgLoaded = false
+var uiLoaded = false
+var cfg = {
+  ["darkmode"]: true,
+  ["settings"]: {
+    ["local"]: {
+        ["tcp"]: 4444,
+        ["udp"]: 4445,
+        ["ws"]: 4446,
+    },
+    ["remote"]: {
+        ["ip"]: "127.0.0.1",
+        ["tcp"]: 30813,
+        ["udp"]: 30814,
+        ["ws"]: 30815,
+    },
+  }
+}
+
+fs.open(filename,'r',function(err, fd){
+    if (err) {
+      fs.writeFile(filename, JSON.stringify(cfg, null, 4), function(err) {
+          if(err) {
+              console.log(err);
+          }
+          console.log("Config file created.");
+      });
+    } else {
+      cfg = JSON.parse(fs.readFileSync('config.json', 'utf8'));
+      if (uiLoaded) {
+        win.webContents.send('settings', cfg);
+      } else {
+        cfgLoaded = true
+      }
+    }
+  });
+
+function SaveConfig(cfg) {
+  fs.writeFile('config.json', JSON.stringify(cfg, null, 4), function (err) {
+  if (err) throw err;
+  console.log('Config Saved!');
+});
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -34,6 +81,9 @@ function createWindow () {
     // when you should delete the corresponding element.
     win = null
   })
+  if (cfgLoaded) {
+    win.webContents.send('settings', cfg);
+  }
 }
 
 // This method will be called when Electron has finished
@@ -71,13 +121,15 @@ var checkboxes = {
     ["WSIN"]: false,
     ["WSOUT"]: false,
 }
-var Name = "Link"
 
 // IPC Handler
 ///////////////////////////////////////////////
 ipcMain.on('hello', (event, args) => {
   console.log("Hello Event: "+args)
+  uiLoaded = true
   event.sender.send('fromMain','Hi, asyn reply');
+  event.sender.send('settings', cfg);
+  win.webContents.send('console', `[${Name}] Config Loaded.`);
 });
 
 ipcMain.on('checkboxes', (event, args) => {
@@ -88,6 +140,10 @@ ipcMain.on('control', (event, args) => {
   //console.log(args)
   if (args.option == "START") {
     Start(args);
+    cfg.settings.local = args.local
+    cfg.settings.remote = args.remote
+    SaveConfig(cfg)
+    win.webContents.send('console', `[${Name}] Config Updated.`);
   } else if (args.option == "RESET") {
     Reset(args)
   }
@@ -96,10 +152,15 @@ ipcMain.on('control', (event, args) => {
 const net = require('net');
 var dgram = require('dgram');
 
+var TCPserver = net.createServer();
+var TCPclient = new net.Socket();
+
+var UDPserver = dgram.createSocket('udp4');
+var UDPclient = dgram.createSocket('udp4');
+
 function Start(config) {
   // TCP Server
   ///////////////////////////////////////////////
-  var TCPserver = net.createServer();
   TCPserver.listen(Number(config.local.tcp), () => {
     win.webContents.send('console', `[TCP][${Name}] TCP Ready & Listening on port: ${config.local.tcp}`);
   });
@@ -109,7 +170,6 @@ function Start(config) {
     win.webContents.send('console', `[TCP][Game -> ${Name}] Game Connected`);
     // TCP Client
     ///////////////////////////////////////////////
-    var TCPclient = new net.Socket();
     TCPclient.connect(Number(config.remote.tcp), config.remote.ip, function() {
       win.webContents.send('console', `[TCP][${Name} --> Server] TCP Connected`);
     });
@@ -148,14 +208,12 @@ function Start(config) {
 
   // UDP Server
   ///////////////////////////////////////////////
-  var UDPserver = dgram.createSocket('udp4');
   var Rinfo = {}
   UDPserver.on('listening', function() {
     win.webContents.send('console', `[UDP][${Name}] UDP Ready & Listening on port: ${config.local.udp}`);
   });
   // UDP Client
   ///////////////////////////////////////////////
-  var UDPclient = dgram.createSocket('udp4');
   UDPclient.on('message',function(msg,info){
     if (checkboxes.UDPIN) {
       win.webContents.send('console', `[UDP][Server --> Client] ${msg.toString()}`);
@@ -209,6 +267,16 @@ function Start(config) {
   });*/
 }
 
-function RESET() {
-
+function Reset(config) {
+  console.log("Reset Called")
+  UDPclient.close();
+  win.webContents.send('console', `[UDP] Client Connection Closed.`);
+  UDPserver.close();
+  win.webContents.send('console', `[UDP] Server Connection Closed.`);
+  TCPclient.destroy();
+  TCPserver.close(function () {
+    TCPserver.unref();
+    win.webContents.send('console', `[TCP] Server Connection Closed.`);
+  });
+  Start(config)
 }

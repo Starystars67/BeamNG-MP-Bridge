@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "beamng mp link is for allowing connection between server and client over the internet",
   "main": "main.js",
+  "productName":"BeamNG-MP Bridge",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-packager . --no-prune --asar"
   },
   "repository": {
     "type": "git",
