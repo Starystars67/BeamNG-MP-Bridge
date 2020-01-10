@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/Starystars67/BeamNG-MP-Bridge#readme",
   "dependencies": {
-    "jquery": "^3.4.1"
+    "jquery": "^3.4.1",
+    "ws": "^7.2.1"
   },
   "devDependencies": {
     "electron": "^6.1.7"
