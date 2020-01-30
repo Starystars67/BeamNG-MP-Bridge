@@ -59,3 +59,13 @@ const remote = require('electron').remote;
     }
   }
 })();
+
+// Open all links in external browser
+let shell = require('electron').shell
+document.addEventListener('click', function (event) {
+  if (event.target.tagName == 'LI' && event.target.parentElement.href.startsWith('http')) {
+    console.log("MATCHED EVENT")
+    event.preventDefault()
+    shell.openExternal(event.target.parentElement.href)
+  }
+})

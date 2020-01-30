@@ -17,8 +17,29 @@ body {
   overflow-y: hidden;
 }
 
+/*
+  NAV BAR
+*/
 
+ul#nav-bar {
+    list-style: none;
+    display: flex;
+    font-size: x-large;
+}
 
+a.nav-item {
+    color: #fff;
+    text-decoration: none;
+    padding: 0px 11px;
+}
+
+a.nav-item:hover {
+    color: #a69aff;
+}
+
+/*
+
+*/
 #titlebar {
   display: block;
   position: fixed;
@@ -34,7 +55,8 @@ body {
   -webkit-app-region: drag;
 }
 #titlebar {
-  color: #FFF;
+    color: #FFF;
+    border-bottom: #4d4d4d solid 1px;
 }
 #titlebar #drag-region {
   display: grid;
@@ -103,11 +125,15 @@ body {
 #main {
   height: calc(100% - 32px);
   margin-top: 32px;
-  padding: 20px;
+  padding: 0px 20px 20px 20px;
   overflow-y: auto;
 }
 
-
+hr.hr-norm {
+    background-color: #5d5d5d;
+    height: 1px;
+    margin: 4px 0px;
+}
 
 h1 {
   margin: 0 0 10px 0;
@@ -155,7 +181,7 @@ div#bottom {
     bottom: 15px;
     border: solid 2px #4c4c4c;
     height: 62px;
-    width: 95%;
+    width: calc(95% - 2px);
 }
 
 div#options {
@@ -198,7 +224,7 @@ div#middle {
 }
 
 div#console {
-    height: calc(100vh - 275px);
+    height: calc(100vh - 295px);
 }
 
 ul#live-console {
@@ -211,4 +237,83 @@ ul#live-console {
 
 .custom-file {
     margin-bottom: 16px;
+}
+
+/*
+  Servers Page Styling
+*/
+
+.servers-header {
+    width: 100%;
+    background-color: rgba(204, 204, 204, 0.3);
+    padding: 4px;
+    margin-bottom: 4px;
+    padding-right: 40px;
+}
+
+.servers-list {
+    width: 100%;
+    /* background-color: rgba(115, 115, 115, 0.3); */
+    margin-bottom: 4px;
+}
+
+span.server-join {
+    float: right;
+}
+
+button.server-join-button {
+    padding: 3px 6px;
+    position: relative;
+    top: -2px;
+}
+
+span.server-ping {
+    float: right;
+    width: 70px;
+    border-left: 1px solid #fff;
+    padding-left: 4px;
+}
+
+span.server-players {
+    width: 70px;
+    border-left: 1px solid #fff;
+    padding-left: 4px;
+}
+
+span.server-location {
+    float: left;
+    width: 100px;
+    padding-left: 4px;
+}
+
+span.server-map {
+    float: left;
+    width: 140px;
+    padding-left: 4px;
+    border-left: 1px solid #fff;
+}
+
+span.server-name {
+    float: left;
+    width: 320px;
+    padding-left: 4px;
+    border-left: 1px solid #fff;
+}
+
+.servers-item {
+    margin: 2px 0px;
+    padding: 4px;
+    margin-bottom: 2px;
+    background-color: rgba(115, 115, 115, 0.3);
+}
+
+.servers-item:hover {
+    background-color: rgba(181, 181, 181, 0.25);
+}
+
+#Update-Button {
+    float: right;
+    position: fixed;
+    right: 10px;
+    color: chartreuse;
 }
