@@ -2,4 +2,5 @@
 [Bb]uild/
 build_*/
 cmake-build-debug/
+.idea/
 .DS_Store
