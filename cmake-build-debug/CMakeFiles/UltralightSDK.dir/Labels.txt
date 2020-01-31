@@ -1,0 +1,13 @@
+# Target labels
+ UltralightSDK
+# Source files and their labels
+C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/CMakeFiles/UltralightSDK
+C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/CMakeFiles/UltralightSDK.rule
+C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/CMakeFiles/UltralightSDK-complete.rule
+C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/UltralightSDK-prefix/src/UltralightSDK-stamp/UltralightSDK-install.rule
+C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/UltralightSDK-prefix/src/UltralightSDK-stamp/UltralightSDK-mkdir.rule
+C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/UltralightSDK-prefix/src/UltralightSDK-stamp/UltralightSDK-download.rule
+C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/UltralightSDK-prefix/src/UltralightSDK-stamp/UltralightSDK-update.rule
+C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/UltralightSDK-prefix/src/UltralightSDK-stamp/UltralightSDK-patch.rule
+C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/UltralightSDK-prefix/src/UltralightSDK-stamp/UltralightSDK-configure.rule
+C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/UltralightSDK-prefix/src/UltralightSDK-stamp/UltralightSDK-build.rule
