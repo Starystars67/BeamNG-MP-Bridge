@@ -1,3 +1,0 @@
-repository='external project URL'
-module='https://ultralight-sdk.sfo2.cdn.digitaloceanspaces.com/ultralight-sdk-latest-win-x86.7z'
-tag=''

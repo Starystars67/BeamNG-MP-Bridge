@@ -1,4 +1,0 @@
-C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/CMakeFiles/UltralightSDK.dir
-C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/CMakeFiles/Bridge.dir
-C:/Users/Mitch/Desktop/GitHub/BeamNG-MP-Bridge/cmake-build-debug/CMakeFiles/rebuild_cache.dir
