@@ -1,13 +1,18 @@
 #include "Bridge.h"
 
-#define WINDOW_WIDTH  600
-#define WINDOW_HEIGHT 400
+#define WINDOW_WIDTH  800
+#define WINDOW_HEIGHT 600
 
 Bridge::Bridge() {
   ///
   /// Create our main App instance.
   ///
   app_ = App::Create();
+
+  ///
+  /// Create Inspector View
+  ///
+  /// RefPtr<View> inspector_view = view->inspector();
 
   ///
   /// Create a resizable window by passing by OR'ing our window flags with
@@ -19,7 +24,7 @@ Bridge::Bridge() {
   ///
   /// Set the title of our window.
   ///
-  window_->SetTitle("Bridge");
+  window_->SetTitle("BeamNG.drive Multiplayer Bridge");
 
   ///
   /// Tell our app to use 'window' as our main window.
@@ -43,6 +48,9 @@ Bridge::Bridge() {
   /// Load a page into our overlay's View
   ///
   overlay_->view()->LoadURL("file:///app.html");
+
+  /// Load Inspectroir
+  /// inspector_view->Resize(500, 500);
 
   ///
   /// Register our Bridge instance as an AppListener so we can handle the
